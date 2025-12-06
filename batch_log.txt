@@ -4,7 +4,7 @@
    Fully Automated Setup & Launch 
 ============================================================ 
  
-Log started at: 06-12-2025 13:53:06.06 
+Log started at: 06-12-2025 21:14:33.93 
 Working directory: C:\Users\avnig\Downloads\aegis-main\aegis-main 
  
 [1/7] Checking prerequisites... 

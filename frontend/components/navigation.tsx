@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
+import { isAuthenticated, removeAuthToken } from "@/lib/auth";
 
 const primaryLinks = [
   { href: "/", label: "Overview" },
@@ -13,6 +15,19 @@ const primaryLinks = [
 
 export function Navigation() {
   const pathname = usePathname();
+  const router = useRouter();
+  const [authenticated, setAuthenticated] = useState(false);
+
+  useEffect(() => {
+    // Check auth status on mount and when pathname changes
+    setAuthenticated(isAuthenticated());
+  }, [pathname]);
+
+  const handleLogout = () => {
+    removeAuthToken();
+    setAuthenticated(false);
+    router.push("/login");
+  };
 
   return (
     <header className="app-nav">
@@ -45,12 +60,26 @@ export function Navigation() {
       </nav>
 
       <div className="app-nav__actions">
-        <Link href="/login" className="app-nav__action ghost">
-          Log in
-        </Link>
-        <Link href="/signup" className="app-nav__action primary">
-          Get Started
-        </Link>
+        {authenticated ? (
+          <>
+            <button 
+              onClick={handleLogout}
+              className="app-nav__action ghost"
+              style={{ cursor: "pointer", background: "none", border: "none", fontFamily: "inherit" }}
+            >
+              Log out
+            </button>
+          </>
+        ) : (
+          <>
+            <Link href="/login" className="app-nav__action ghost">
+              Log in
+            </Link>
+            <Link href="/signup" className="app-nav__action primary">
+              Get Started
+            </Link>
+          </>
+        )}
       </div>
     </header>
   );

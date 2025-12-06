@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { login } from "@/lib/api";
+import { setAuthToken } from "@/lib/auth";
 
 const STORY_LINES = [
   "Live breach telemetry. Automatically triaged.",
@@ -27,7 +28,7 @@ export default function LoginPage() {
 
     try {
       const response = await login({ email, password });
-      localStorage.setItem("ageis.idToken", response.idToken);
+      setAuthToken(response.idToken);
       setSuccessMessage("Securely signed in. Redirecting...");
       setTimeout(() => router.push("/dashboard"), 1500);
     } catch (err) {

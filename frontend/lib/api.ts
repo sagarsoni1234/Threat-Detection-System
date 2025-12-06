@@ -9,6 +9,8 @@
  * - Unified Risk Scoring
  */
 
+import { getAuthHeader } from "./auth";
+
 const API_BASE_URL =
   process.env.NEXT_PUBLIC_API_BASE_URL?.replace(/\/$/, "") ||
   "http://localhost:8000";
@@ -149,18 +151,44 @@ export interface HealthStatus {
 // API Client
 // ============================================================
 
-async function request<T>(path: string, options: RequestInit): Promise<T> {
-  const response = await fetch(`${API_BASE_URL}${path}`, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {})
+interface RequestOptions extends RequestInit {
+  requireAuth?: boolean;
+}
+
+async function request<T>(path: string, options: RequestOptions = {}): Promise<T> {
+  const { requireAuth = true, ...fetchOptions } = options;
+  
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+    ...(fetchOptions.headers || {})
+  };
+
+  // Add authentication token if available and required
+  if (requireAuth) {
+    const authHeader = getAuthHeader();
+    if (authHeader) {
+      headers["Authorization"] = authHeader;
     }
+  }
+
+  const response = await fetch(`${API_BASE_URL}${path}`, {
+    ...fetchOptions,
+    headers
   });
 
   const data = (await response.json()) as T;
 
   if (!response.ok) {
+    // Handle 401 Unauthorized - token might be invalid
+    if (response.status === 401) {
+      // Clear invalid token
+      if (typeof window !== "undefined") {
+        localStorage.removeItem("aegis.idToken");
+        localStorage.removeItem("ageis.idToken"); // Remove old typo key
+      }
+      throw new Error("Authentication failed. Please log in again.");
+    }
+    
     throw new Error(
       typeof data === "object" && data !== null && "error" in data
         ? String((data as { error: unknown }).error)
@@ -180,14 +208,16 @@ async function request<T>(path: string, options: RequestInit): Promise<T> {
 export async function login(credentials: Credentials) {
   return request<{ idToken: string; email: string; uid: string }>("/login", {
     method: "POST",
-    body: JSON.stringify(credentials)
+    body: JSON.stringify(credentials),
+    requireAuth: false // Login endpoint doesn't require auth
   });
 }
 
 export async function signup(credentials: Credentials) {
   return request<{ uid: string; email: string }>("/signup", {
     method: "POST",
-    body: JSON.stringify(credentials)
+    body: JSON.stringify(credentials),
+    requireAuth: false // Signup endpoint doesn't require auth
   });
 }
 
