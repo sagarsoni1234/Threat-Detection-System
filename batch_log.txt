@@ -1,0 +1,135 @@
+============================================================ 
+   AEGIS THREAT DETECTION SYSTEM 
+============================================================ 
+   Fully Automated Setup & Launch 
+============================================================ 
+ 
+Log started at: 06-12-2025 13:53:06.06 
+Working directory: C:\Users\avnig\Downloads\aegis-main\aegis-main 
+ 
+[1/7] Checking prerequisites... 
+Python 3.10.5
+  OK: Python found 
+v22.4.1
+  OK: Node.js found 
+Checking npm... 
+  OK: npm found (version: 10.8.1) 
+ 
+[2/7] Setting up virtual environment... 
+  OK: Virtual environment exists 
+  Activating virtual environment... 
+  OK: Virtual environment activated 
+[3/7] Upgrading pip... 
+  OK: pip upgraded 
+[4/7] Installing Python dependencies... 
+  This may take 5-10 minutes on first run... 
+Requirement already satisfied: pandas>=2.0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 4)) (2.3.3)
+Requirement already satisfied: numpy>=1.24.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 5)) (2.2.6)
+Requirement already satisfied: scikit-learn>=1.3.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 6)) (1.7.2)
+Requirement already satisfied: xgboost>=2.0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 7)) (3.1.2)
+Requirement already satisfied: joblib>=1.3.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 8)) (1.5.2)
+Requirement already satisfied: imblearn>=0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 9)) (0.0)
+Requirement already satisfied: tensorflow>=2.13.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 12)) (2.20.0)
+Requirement already satisfied: fastapi>=0.104.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 15)) (0.123.9)
+Requirement already satisfied: uvicorn>=0.24.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (0.38.0)
+Requirement already satisfied: pydantic>=2.5.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 17)) (2.12.5)
+Requirement already satisfied: boto3>=1.29.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 20)) (1.42.3)
+Requirement already satisfied: streamlit>=1.28.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 23)) (1.52.0)
+Requirement already satisfied: python-multipart>=0.0.6 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 26)) (0.0.20)
+Requirement already satisfied: python-dotenv>=1.0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from -r requirements.txt (line 27)) (1.2.1)
+Requirement already satisfied: python-dateutil>=2.8.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pandas>=2.0.0->-r requirements.txt (line 4)) (2.9.0.post0)
+Requirement already satisfied: pytz>=2020.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pandas>=2.0.0->-r requirements.txt (line 4)) (2025.2)
+Requirement already satisfied: tzdata>=2022.7 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pandas>=2.0.0->-r requirements.txt (line 4)) (2025.2)
+Requirement already satisfied: scipy>=1.8.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from scikit-learn>=1.3.0->-r requirements.txt (line 6)) (1.15.3)
+Requirement already satisfied: threadpoolctl>=3.1.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from scikit-learn>=1.3.0->-r requirements.txt (line 6)) (3.6.0)
+Requirement already satisfied: imbalanced-learn in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from imblearn>=0.0->-r requirements.txt (line 9)) (0.14.0)
+Requirement already satisfied: absl-py>=1.0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.3.1)
+Requirement already satisfied: astunparse>=1.6.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (1.6.3)
+Requirement already satisfied: flatbuffers>=24.3.25 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (25.9.23)
+Requirement already satisfied: gast!=0.5.0,!=0.5.1,!=0.5.2,>=0.2.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.7.0)
+Requirement already satisfied: google_pasta>=0.1.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.2.0)
+Requirement already satisfied: libclang>=13.0.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (18.1.1)
+Requirement already satisfied: opt_einsum>=2.3.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.4.0)
+Requirement already satisfied: packaging in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (25.0)
+Requirement already satisfied: protobuf>=5.28.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (6.33.1)
+Requirement already satisfied: requests<3,>=2.21.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.32.5)
+Requirement already satisfied: setuptools in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (58.1.0)
+Requirement already satisfied: six>=1.12.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (1.17.0)
+Requirement already satisfied: termcolor>=1.1.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.2.0)
+Requirement already satisfied: typing_extensions>=3.6.6 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (4.15.0)
+Requirement already satisfied: wrapt>=1.11.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.0.1)
+Requirement already satisfied: grpcio<2.0,>=1.24.3 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (1.76.0)
+Requirement already satisfied: tensorboard~=2.20.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.20.0)
+Requirement already satisfied: keras>=3.10.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.12.0)
+Requirement already satisfied: h5py>=3.11.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.15.1)
+Requirement already satisfied: ml_dtypes<1.0.0,>=0.5.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.5.4)
+Requirement already satisfied: charset_normalizer<4,>=2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from requests<3,>=2.21.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.4.4)
+Requirement already satisfied: idna<4,>=2.5 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from requests<3,>=2.21.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.11)
+Requirement already satisfied: urllib3<3,>=1.21.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from requests<3,>=2.21.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.6.0)
+Requirement already satisfied: certifi>=2017.4.17 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from requests<3,>=2.21.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (2025.11.12)
+Requirement already satisfied: markdown>=2.6.8 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorboard~=2.20.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.10)
+Requirement already satisfied: pillow in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorboard~=2.20.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (12.0.0)
+Requirement already satisfied: tensorboard-data-server<0.8.0,>=0.7.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorboard~=2.20.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.7.2)
+Requirement already satisfied: werkzeug>=1.0.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from tensorboard~=2.20.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (3.1.4)
+Requirement already satisfied: starlette<0.51.0,>=0.40.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from fastapi>=0.104.0->-r requirements.txt (line 15)) (0.50.0)
+Requirement already satisfied: annotated-doc>=0.0.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from fastapi>=0.104.0->-r requirements.txt (line 15)) (0.0.4)
+Requirement already satisfied: annotated-types>=0.6.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pydantic>=2.5.0->-r requirements.txt (line 17)) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.5 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pydantic>=2.5.0->-r requirements.txt (line 17)) (2.41.5)
+Requirement already satisfied: typing-inspection>=0.4.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from pydantic>=2.5.0->-r requirements.txt (line 17)) (0.4.2)
+Requirement already satisfied: anyio<5,>=3.6.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from starlette<0.51.0,>=0.40.0->fastapi>=0.104.0->-r requirements.txt (line 15)) (4.12.0)
+Requirement already satisfied: exceptiongroup>=1.0.2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from anyio<5,>=3.6.2->starlette<0.51.0,>=0.40.0->fastapi>=0.104.0->-r requirements.txt (line 15)) (1.3.1)
+Requirement already satisfied: click>=7.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn>=0.24.0->uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (8.3.1)
+Requirement already satisfied: h11>=0.8 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn>=0.24.0->uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (0.16.0)
+Requirement already satisfied: botocore<1.43.0,>=1.42.3 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from boto3>=1.29.0->-r requirements.txt (line 20)) (1.42.3)
+Requirement already satisfied: jmespath<2.0.0,>=0.7.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from boto3>=1.29.0->-r requirements.txt (line 20)) (1.0.1)
+Requirement already satisfied: s3transfer<0.17.0,>=0.16.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from boto3>=1.29.0->-r requirements.txt (line 20)) (0.16.0)
+Requirement already satisfied: altair!=5.4.0,!=5.4.1,<7,>=4.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (6.0.0)
+Requirement already satisfied: blinker<2,>=1.5.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (1.9.0)
+Requirement already satisfied: cachetools<7,>=4.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (6.2.2)
+Requirement already satisfied: pyarrow>=7.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (22.0.0)
+Requirement already satisfied: tenacity<10,>=8.1.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (9.1.2)
+Requirement already satisfied: toml<2,>=0.10.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (0.10.2)
+Requirement already satisfied: watchdog<7,>=2.1.5 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (6.0.0)
+Requirement already satisfied: gitpython!=3.1.19,<4,>=3.0.7 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (3.1.45)
+Requirement already satisfied: pydeck<1,>=0.8.0b4 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (0.9.1)
+Requirement already satisfied: tornado!=6.5.0,<7,>=6.0.3 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from streamlit>=1.28.0->-r requirements.txt (line 23)) (6.5.2)
+Requirement already satisfied: jinja2 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (3.1.6)
+Requirement already satisfied: jsonschema>=3.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (4.25.1)
+Requirement already satisfied: narwhals>=1.27.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (2.13.0)
+Requirement already satisfied: colorama in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from click>=7.0->uvicorn>=0.24.0->uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (0.4.6)
+Requirement already satisfied: gitdb<5,>=4.0.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from gitpython!=3.1.19,<4,>=3.0.7->streamlit>=1.28.0->-r requirements.txt (line 23)) (4.0.12)
+Requirement already satisfied: smmap<6,>=3.0.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from gitdb<5,>=4.0.1->gitpython!=3.1.19,<4,>=3.0.7->streamlit>=1.28.0->-r requirements.txt (line 23)) (5.0.2)
+Requirement already satisfied: wheel<1.0,>=0.23.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from astunparse>=1.6.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.45.1)
+Requirement already satisfied: MarkupSafe>=2.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from jinja2->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (3.0.3)
+Requirement already satisfied: attrs>=22.2.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (25.4.0)
+Requirement already satisfied: jsonschema-specifications>=2023.03.6 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (2025.9.1)
+Requirement already satisfied: referencing>=0.28.4 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (0.37.0)
+Requirement already satisfied: rpds-py>=0.7.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from jsonschema>=3.0->altair!=5.4.0,!=5.4.1,<7,>=4.0->streamlit>=1.28.0->-r requirements.txt (line 23)) (0.30.0)
+Requirement already satisfied: rich in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (14.2.0)
+Requirement already satisfied: namex in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.1.0)
+Requirement already satisfied: optree in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.18.0)
+Requirement already satisfied: httptools>=0.6.3 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (0.7.1)
+Requirement already satisfied: pyyaml>=5.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (6.0.3)
+Requirement already satisfied: watchfiles>=0.13 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (1.1.1)
+Requirement already satisfied: websockets>=10.4 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from uvicorn[standard]>=0.24.0->-r requirements.txt (line 16)) (15.0.1)
+Requirement already satisfied: markdown-it-py>=2.2.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from rich->keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (4.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from rich->keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (2.19.2)
+Requirement already satisfied: mdurl~=0.1 in c:\users\avnig\downloads\aegis-main\aegis-main\.venv\lib\site-packages (from markdown-it-py>=2.2.0->rich->keras>=3.10.0->tensorflow>=2.13.0->-r requirements.txt (line 12)) (0.1.2)
+  OK: Python dependencies installed 
+[5/7] Installing frontend dependencies... 
+  Changed to frontend directory 
+  Checking for node_modules... 
+  OK: Frontend dependencies already installed (node_modules found) 
+  Changing back to project root... 
+  OK: Returned to project root 
+ 
+[6/7] Preparing ports... 
+  OK: Port 8000 cleared 
+  OK: Port 3000 cleared 
+[7/7] Starting Aegis services... 
+  Starting Backend API on port 8000... 
+  Starting Frontend on port 3000... 
+ 
+============================================================ 
+   AEGIS IS STARTING 
+============================================================ 
